@@ -85,6 +85,11 @@ async def main():
         help="Run AzureUserStoryAgent to parse use-case plan and create User Stories in Azure DevOps"
     )
     parser.add_argument(
+        "--test-cases",
+        action="store_true",
+        help="Run TestCaseCreateAgent to parse use-case plan and create XML-stepped Test Cases in Azure DevOps"
+    )
+    parser.add_argument(
         "--pat",
         type=str,
         default=None,
@@ -92,6 +97,15 @@ async def main():
     )
 
     args = parser.parse_args()
+
+    # Handle Azure DevOps Test Case Creator Agent CLI invocation
+    if args.test_cases:
+        from agents.test_case_agent import TestCaseCreateAgent
+        tc_agent = TestCaseCreateAgent(pat=args.pat)
+        plan_file = args.plan_output if os.path.exists(args.plan_output) else "specs/use-case-plan.md"
+        summary = tc_agent.publish_all_from_plan(plan_path=plan_file)
+        print(f"\n[AZURE] Successfully created {summary.total_created} Test Cases in Azure DevOps!")
+        sys.exit(0)
 
     # Handle Azure DevOps User Story Agent CLI invocation
     if args.azure_stories:

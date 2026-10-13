@@ -24,6 +24,17 @@ class AzureUserStoryPayload(BaseModel):
     story_points: int = 3
 
 
+class AzureTestCasePayload(BaseModel):
+    """Formatted Test Case ready for Azure DevOps Work Item API."""
+    scenario_id: str
+    title: str
+    description_html: str
+    steps_xml: str
+    tags: str = "Use-Case; Playwright-Automation; TestCase"
+    priority: int = 1
+    linked_story_id: Optional[int] = None
+
+
 class CreatedWorkItem(BaseModel):
     """Represents a work item created in Azure DevOps Boards."""
     id: int

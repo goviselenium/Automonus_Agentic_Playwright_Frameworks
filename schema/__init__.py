@@ -2,7 +2,13 @@ from schema.test_plan import StepIntent, AtomicStep, TestPlan
 from schema.page_state import InteractiveElement, PageStateSnapshot
 from schema.execution_result import StepStatus, SelfHealingAuditEntry, StepExecutionResult, TestExecutionReport
 from schema.coding_standards import ViolationType, CodeViolation, CodeRefactorResult, StandardsAuditReport
-from schema.azure_work_item import ParsedUseCase, AzureUserStoryPayload, CreatedWorkItem, AzureCreationSummary
+from schema.azure_work_item import (
+    ParsedUseCase,
+    AzureUserStoryPayload,
+    AzureTestCasePayload,
+    CreatedWorkItem,
+    AzureCreationSummary
+)
 
 __all__ = [
     "StepIntent",
@@ -20,6 +26,7 @@ __all__ = [
     "StandardsAuditReport",
     "ParsedUseCase",
     "AzureUserStoryPayload",
+    "AzureTestCasePayload",
     "CreatedWorkItem",
     "AzureCreationSummary"
 ]

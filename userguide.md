@@ -26,6 +26,18 @@ This guide provides comprehensive instructions on how to configure, run, and cus
    - [RAG Pytest Quality Gates](#running-rag-pytest-quality-gates-teststest_rag_pipelinepy)
    - [Edge-Case & Adversarial Verification](#edge-case--adversarial-verification)
    - [CI/CD Workflow & Artifact Exports](#cicd-automated-workflow-githubworkflowsrag_evalyml)
+8. [Playwright Use Case Test Planner](#8-playwright-use-case-test-planner)
+   - [Standard Use Case Template Structure](#standard-use-case-template-structure)
+   - [Generating Test Plans (`--plan-only`, `--plan-output`)](#generating-test-plans---plan-only---plan-output)
+9. [Python Coding Standards Agent](#9-python-coding-standards-agent)
+   - [Coding Standards Overview (PEP 8 & Best Practices)](#coding-standards-overview-pep-8--best-practices)
+   - [Auditing & Auto-Fixing Code (`--standards`, `--standards-fix`)](#auditing--auto-fixing-code---standards---standards-fix)
+   - [Tooling Configuration (`pyproject.toml`)](#tooling-configuration-pyprojecttoml)
+10. [Azure DevOps Agile Work Item Automation](#10-azure-devops-agile-work-item-automation)
+    - [User Story Creation Agent (`--azure-stories`)](#user-story-creation-agent---azure-stories)
+    - [Test Case Creation Agent with XML Steps (`--test-cases`)](#test-case-creation-agent-with-xml-steps---test-cases)
+    - [Traceability & Linking Matrix](#traceability--linking-matrix)
+11. [Azure DevOps Git Repository Synchronization](#11-azure-devops-git-repository-synchronization)
 
 ---
 
@@ -374,4 +386,170 @@ Evaluation suites run automatically on pull requests and pushes to `main`. If an
 #### Exported Evaluation Artifacts:
 - **JSON Score Log**: `output/artifacts/reports/rag_eval_report.json`
 - **HTML Test Dashboard**: `output/artifacts/reports/execution_report.html`
+
+---
+
+## 8. Playwright Use Case Test Planner
+
+The framework includes a structured **Use Case Test Planner** in [`agents/planner_agent.py`](file:///e:/AI_PORTABLE/PROJECTS/playwrightFrameworkPythons/agents/planner_agent.py) that decomposes business requirements into detailed, production-grade Use Case scenarios adhering strictly to a standardized template.
+
+### Standard Use Case Template Structure
+
+Every scenario generated follows this exact specification:
+
+```markdown
+## [Scenario ID & Title]
+- **Actor:** [e.g., Registered User]
+- **Preconditions:** [e.g., User is logged in and on the dashboard]
+- **Main Flow / Steps:**
+  1. [Step 1]
+  2. [Step 2]
+- **Alternate / Exception Flows:**
+  - [Alternative path if applicable]
+- **Expected Outcome:** [Observable result verifying success or refusal]
+```
+
+### Generating Test Plans (`--plan-only`, `--plan-output`)
+
+You can generate and export test plans without triggering the live Playwright browser engine:
+
+```powershell
+# Generate test plan and save to specs/use-case-plan.md
+python main.py --requirement tests/sample_requirements/automationpractice.md --url https://shop.qaautomationlabs.com/index.php --plan-only
+
+# Specify a custom plan output destination
+python main.py --requirement tests/sample_requirements/automationpractice.md --url https://shop.qaautomationlabs.com/index.php --plan-output specs/my-custom-plan.md --plan-only
+```
+
+---
+
+## 9. Python Coding Standards Agent
+
+The framework includes a zero-dependency autonomous **Coding Standards Agent** ([`agents/standards_agent.py`](file:///e:/AI_PORTABLE/PROJECTS/playwrightFrameworkPythons/agents/standards_agent.py)) implementing all rules defined in [`Coding_Standards_python.md`](file:///e:/AI_PORTABLE/PROJECTS/playwrightFrameworkPythons/Coding_Standards_python.md).
+
+### Coding Standards Enforced
+1. **PEP 8 Formatting:**
+   - 4 spaces indentation per level (tabs strictly forbidden).
+   - Maximum line length of **88 characters** (Black standard).
+   - Blank lines: 2 blank lines before top-level functions/classes, 1 blank line between methods.
+   - Import grouping: Sorted and categorized into **1. Stdlib**, **2. Third-party**, **3. Local application**, separated by blank lines.
+2. **Naming Conventions:**
+   - Classes: `PascalCase`
+   - Functions & Methods: `snake_case`
+   - Constants: `UPPER_CASE`
+   - Private attributes: `_leading_underscore`
+3. **Modern Python Best Practices:**
+   - Type hints on function parameters and return annotations (`-> ReturnType`).
+   - Google/Sphinx style docstrings on public modules, classes, and methods.
+   - Modern f-strings preferred over old-style `%` formatting and `.format()`.
+4. **Tooling Integration:**
+   - Automatic generation of [`pyproject.toml`](file:///e:/AI_PORTABLE/PROJECTS/playwrightFrameworkPythons/pyproject.toml) configured for **Ruff**, **Black**, and **Mypy**.
+
+### CLI Usage: Auditing & Auto-Fixing
+
+```powershell
+# Audit codebase against Coding_Standards_python.md
+python main.py --standards .
+
+# Audit and automatically fix indentation, blank lines, and imports
+python main.py --standards agents/ --standards-fix
+
+# Generate production pyproject.toml configuration
+python -m agents.standards_agent --gen-config
+```
+
+The agent outputs a detailed audit report in Markdown at [`output/artifacts/standards_report.md`](file:///e:/AI_PORTABLE/PROJECTS/playwrightFrameworkPythons/output/artifacts/standards_report.md).
+
+---
+
+## 10. Azure DevOps Agile Work Item Automation
+
+The framework bridges automated testing with Agile project management by transforming test plans directly into Azure DevOps work items via the Azure DevOps REST API (v7.1).
+
+### User Story Creation Agent (`--azure-stories`)
+
+[`AzureUserStoryAgent`](file:///e:/AI_PORTABLE/PROJECTS/playwrightFrameworkPythons/agents/azure_user_story_agent.py) parses [`specs/use-case-plan.md`](file:///e:/AI_PORTABLE/PROJECTS/playwrightFrameworkPythons/specs/use-case-plan.md) and creates User Stories in Azure DevOps Boards following [`CreateUserStory.md`](file:///e:/AI_PORTABLE/PROJECTS/playwrightFrameworkPythons/CreateUserStory.md):
+
+```powershell
+# Create User Stories in Azure DevOps from test plan
+python main.py --azure-stories
+
+# Provide explicit Personal Access Token (PAT)
+python main.py --azure-stories --pat <YOUR_AZURE_DEVOPS_PAT>
+```
+
+Each generated story features:
+- **Title:** `[<Scenario ID>] <Title>`
+- **Description (`System.Description`):** Structured HTML containing the User Story statement (*As an... I want to... So that...*), Preconditions, Main Execution Flow, and Exception Paths.
+- **Acceptance Criteria (`Microsoft.VSTS.Common.AcceptanceCriteria`):** Concrete verification statements and test assertions.
+- **Tags:** `Playwright; Automation; E2E; Use-Case; <Scenario ID>`.
+
+Published story mappings are saved to [`specs/azure-user-stories.md`](file:///e:/AI_PORTABLE/PROJECTS/playwrightFrameworkPythons/specs/azure-user-stories.md).
+
+---
+
+### Test Case Creation Agent with XML Steps (`--test-cases`)
+
+[`TestCaseCreateAgent`](file:///e:/AI_PORTABLE/PROJECTS/playwrightFrameworkPythons/agents/test_case_agent.py) creates specialized `Test Case` work items in Azure DevOps following [`CreateTestCases.md`](file:///e:/AI_PORTABLE/PROJECTS/playwrightFrameworkPythons/CreateTestCases.md):
+
+```powershell
+# Create Test Cases with XML steps and link to User Stories
+python main.py --test-cases
+
+# Run agent module directly
+python -m agents.test_case_agent --plan specs/use-case-plan.md --stories specs/azure-user-stories.md
+```
+
+#### Step XML Embedding
+Test steps are encoded in `/fields/Microsoft.VSTS.TCM.Steps`:
+```xml
+<steps id="0" last="5">
+  <step id="2" type="ActionStep">
+    <parameterizedString isformatted="true">Click autofill demo credentials button</parameterizedString>
+    <description/>
+  </step>
+  <step id="3" type="ValidateStep">
+    <parameterizedString isformatted="true">Click login submit button</parameterizedString>
+    <parameterizedString isformatted="true">Redirects to product catalog page</parameterizedString>
+  </step>
+</steps>
+```
+
+#### Traceability & Linking Matrix
+The agent reads [`specs/azure-user-stories.md`](file:///e:/AI_PORTABLE/PROJECTS/playwrightFrameworkPythons/specs/azure-user-stories.md) and automatically adds `Microsoft.VSTS.Common.TestedBy-Reverse` relations so every Test Case is linked to its parent User Story:
+
+| Scenario | Parent User Story | Created Test Case | Link Status |
+| :---: | :---: | :---: | :---: |
+| `UC-01` | Story `#7` | Test Case `#17` | Linked |
+| `UC-02` | Story `#8` | Test Case `#18` | Linked |
+| `UC-03` | Story `#9` | Test Case `#19` | Linked |
+| `UC-04` | Story `#10` | Test Case `#20` | Linked |
+| `UC-05` | Story `#11` | Test Case `#21` | Linked |
+| `UC-06` | Story `#12` | Test Case `#22` | Linked |
+| `UC-07` | Story `#13` | Test Case `#23` | Linked |
+| `UC-08` | Story `#14` | Test Case `#24` | Linked |
+| `UC-09` | Story `#15` | Test Case `#25` | Linked |
+
+Summary is saved to [`specs/azure-test-cases.md`](file:///e:/AI_PORTABLE/PROJECTS/playwrightFrameworkPythons/specs/azure-test-cases.md).
+
+---
+
+## 11. Azure DevOps Git Repository Synchronization
+
+The codebase is version-controlled and synchronized with Azure DevOps Repos:
+- **Remote URL:** `https://govidev.visualstudio.com/Frameworks/_git/Frameworks`
+- **Tracked Branch:** `main`
+
+### Routine Check-in Commands:
+```powershell
+# Stage changes
+git add .
+
+# Commit with semantic message
+git commit -m "feat: updated test plans and agents"
+
+# Push to Azure DevOps
+git push origin main
+```
+
 

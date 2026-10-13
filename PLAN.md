@@ -98,6 +98,7 @@ flowchart TD
 - [x] **Step 13**: Implement `TestCaseCreateAgent` in `agents/test_case_agent.py` conforming to `CreateTestCases.md` with XML test step generation (`Microsoft.VSTS.TCM.Steps`) and User Story traceability linking.
 - [x] **Step 14**: Execute `TestCaseCreateAgent` to publish all 9 Test Cases (`#17` through `#25`) into Azure DevOps Boards linked to parent User Stories (`#7` through `#15`) and output `specs/azure-test-cases.md`.
 - [x] **Step 15**: Update `userguide.md` and `PLAN.md` with comprehensive documentation, traceability matrices, and progress logs.
+- [x] **Step 16**: Create step-wise [`Workflow.md`](file:///e:/AI_PORTABLE/PROJECTS/playwrightFrameworkPythons/Workflow.md) documenting the 8-step operational lifecycle from environment initialization to Azure DevOps check-in.
 
 ---
 
@@ -119,4 +120,6 @@ flowchart TD
 | 12 | Implement `TestCaseCreateAgent` in `agents/test_case_agent.py` | Built XML step generator conforming to `CreateTestCases.md` and linked test cases to parent user stories. | Completed |
 | 13 | Execute `TestCaseCreateAgent` (`python main.py --test-cases`) | Published 9 Test Cases (`#17` through `#25`) in Azure DevOps Boards with XML steps and linked to User Stories `#7`–`#15`. | Completed |
 | 14 | Synchronize Documentation in `userguide.md` & `PLAN.md` | Documented all new CLI flags, agents, architecture diagrams, traceability links, and Azure DevOps integration workflows. | Completed |
+| 15 | Create `Workflow.md` operational guide | Generated step-wise operational guide with Mermaid workflow diagrams, CLI cheat sheet, and troubleshooting matrix. | Completed |
+
 

@@ -38,10 +38,14 @@ This guide provides comprehensive instructions on how to configure, run, and cus
     - [Test Case Creation Agent with XML Steps (`--test-cases`)](#test-case-creation-agent-with-xml-steps---test-cases)
     - [Traceability & Linking Matrix](#traceability--linking-matrix)
 11. [Azure DevOps Git Repository Synchronization](#11-azure-devops-git-repository-synchronization)
+12. [Step-by-Step Workflow Guide (Workflow.md)](#12-step-by-step-workflow-guide)
 
 ---
 
 ## 1. Quick Start Overview
+
+> [!NOTE]
+> For a complete, numbered end-to-end operational guide from environment initialization to CI/CD check-in, refer to [`Workflow.md`](file:///e:/AI_PORTABLE/PROJECTS/playwrightFrameworkPythons/Workflow.md).
 
 The framework accepts plain English test requirements, decomposes them into atomic step graphs, dynamically inspects live DOM accessibility trees, and executes Playwright actions with dynamic self-healing.
 
@@ -551,5 +555,12 @@ git commit -m "feat: updated test plans and agents"
 # Push to Azure DevOps
 git push origin main
 ```
+
+---
+
+## 12. Step-by-Step Workflow Guide
+
+For a complete, step-by-step walkthrough covering environment setup, test planning, Azure DevOps Boards sync, standards enforcement, execution, RAG gating, and CI/CD, refer directly to [`Workflow.md`](file:///e:/AI_PORTABLE/PROJECTS/playwrightFrameworkPythons/Workflow.md).
+
 
 

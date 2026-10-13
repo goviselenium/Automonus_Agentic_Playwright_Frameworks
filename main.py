@@ -79,8 +79,28 @@ async def main():
         action="store_true",
         help="Automatically fix formatting, tabs, blank lines, and imports with Coding Standards Agent"
     )
+    parser.add_argument(
+        "--azure-stories",
+        action="store_true",
+        help="Run AzureUserStoryAgent to parse use-case plan and create User Stories in Azure DevOps"
+    )
+    parser.add_argument(
+        "--pat",
+        type=str,
+        default=None,
+        help="Azure DevOps Personal Access Token"
+    )
 
     args = parser.parse_args()
+
+    # Handle Azure DevOps User Story Agent CLI invocation
+    if args.azure_stories:
+        from agents.azure_user_story_agent import AzureUserStoryAgent
+        story_agent = AzureUserStoryAgent(pat=args.pat)
+        plan_file = args.plan_output if os.path.exists(args.plan_output) else "specs/use-case-plan.md"
+        summary = story_agent.publish_all_from_plan(plan_path=plan_file)
+        print(f"\n[AZURE] Successfully created {summary.total_created} User Stories in Azure DevOps!")
+        sys.exit(0)
 
     # Handle Coding Standards Agent CLI invocation
     if args.standards is not None:

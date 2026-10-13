@@ -43,7 +43,7 @@ class AutonomousTestRunner:
         self,
         requirement_input: str,
         target_url: Optional[str] = None,
-        plan_output: str = "specs/use-case-plan.md",
+        plan_output: Optional[str] = None,
         plan_only: bool = False
     ) -> TestExecutionReport:
         """

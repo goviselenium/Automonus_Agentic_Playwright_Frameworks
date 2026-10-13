@@ -3,6 +3,7 @@ from agents.planner_agent import PlannerAgent
 from agents.generator_agent import GeneratorAgent, GeneratorActionDecision
 from agents.healer_agent import HealerAgent, HealingDecision
 from agents.standards_agent import CodingStandardsAgent
+from agents.azure_user_story_agent import AzureUserStoryAgent
 
 __all__ = [
     "BaseAgent",
@@ -11,5 +12,6 @@ __all__ = [
     "GeneratorActionDecision",
     "HealerAgent",
     "HealingDecision",
-    "CodingStandardsAgent"
+    "CodingStandardsAgent",
+    "AzureUserStoryAgent"
 ]

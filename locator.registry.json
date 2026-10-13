@@ -1,0 +1,72 @@
+{
+  "proceed to checkout button::input[name='proceedtoretailcheckout'], input[name='proceed.to.checkout'], .a-button-input[type='submit'], text='proceed to checkout'": {
+    "target_description": "Proceed to Checkout button",
+    "original_locator": "input[name='proceedToRetailCheckout'], input[name='proceed.to.checkout'], .a-button-input[type='submit'], text='Proceed to checkout'",
+    "healed_locator": "body",
+    "strategy": "Heuristic Semantic Candidate Generation",
+    "confidence": 0.88,
+    "verified": true,
+    "updated_at": 1791031004.0335493,
+    "iso_timestamp": "2026-10-03T12:36:44Z"
+  },
+  "proceed to checkout button::input[name='proceedtoretailcheckout'], #sc-buy-box-ptc-button input, input[name='proceed.to.checkout'], .a-button-input[type='submit'], text='proceed to checkout'": {
+    "target_description": "Proceed to Checkout button",
+    "original_locator": "input[name='proceedToRetailCheckout'], #sc-buy-box-ptc-button input, input[name='proceed.to.checkout'], .a-button-input[type='submit'], text='Proceed to checkout'",
+    "healed_locator": "input[type='submit']",
+    "strategy": "Heuristic Semantic Candidate Generation",
+    "confidence": 0.88,
+    "verified": true,
+    "updated_at": 1791041024.3328786,
+    "iso_timestamp": "2026-10-03T15:23:44Z"
+  },
+  "customer email/phone input field::#ap_email, input[name='email'], input[type='email'], [data-test='username'], #user-name": {
+    "target_description": "Customer email/phone input field",
+    "original_locator": "#ap_email, input[name='email'], input[type='email'], [data-test='username'], #user-name",
+    "healed_locator": "input[type='text']",
+    "strategy": "Heuristic Semantic Candidate Generation",
+    "confidence": 0.88,
+    "verified": true,
+    "updated_at": 1791041531.5413504,
+    "iso_timestamp": "2026-10-03T15:32:11Z"
+  },
+  "search submit button::#continue, input#continue, span#continue input, #signinsubmit, [data-test='login-button'], #login-button": {
+    "target_description": "Search submit button",
+    "original_locator": "#continue, input#continue, span#continue input, #signInSubmit, [data-test='login-button'], #login-button",
+    "healed_locator": "input[type='submit']",
+    "strategy": "Heuristic Semantic Candidate Generation",
+    "confidence": 0.88,
+    "verified": true,
+    "updated_at": 1791041084.8163183,
+    "iso_timestamp": "2026-10-03T15:24:44Z"
+  },
+  "add to cart button::#add-to-cart-button, input[name='submit.add-to-cart'], span#submit.add-to-cart input, [data-test='add-to-cart-sauce-labs-backpack'], button:has-text('add to cart')": {
+    "target_description": "Add to Cart button",
+    "original_locator": "#add-to-cart-button, input[name='submit.add-to-cart'], span#submit.add-to-cart input, [data-test='add-to-cart-sauce-labs-backpack'], button:has-text('Add to Cart')",
+    "healed_locator": "#nav-cart",
+    "strategy": "Heuristic Semantic Candidate Generation",
+    "confidence": 0.88,
+    "verified": true,
+    "updated_at": 1791041507.8833716,
+    "iso_timestamp": "2026-10-03T15:31:47Z"
+  },
+  "proceed to checkout button::input[name='proceedtoretailcheckout'], #sc-buy-box-ptc-button input, input[name='proceed.to.checkout'], text='proceed to checkout'": {
+    "target_description": "Proceed to Checkout button",
+    "original_locator": "input[name='proceedToRetailCheckout'], #sc-buy-box-ptc-button input, input[name='proceed.to.checkout'], text='Proceed to checkout'",
+    "healed_locator": "input[type='submit']",
+    "strategy": "Heuristic Semantic Candidate Generation",
+    "confidence": 0.88,
+    "verified": true,
+    "updated_at": 1791041520.3224635,
+    "iso_timestamp": "2026-10-03T15:32:00Z"
+  },
+  "continue button::#continue, input#continue, span#continue input, #signinsubmit, [data-test='login-button'], #login-button": {
+    "target_description": "Continue button",
+    "original_locator": "#continue, input#continue, span#continue input, #signInSubmit, [data-test='login-button'], #login-button",
+    "healed_locator": "input[type='submit']",
+    "strategy": "Heuristic Semantic Candidate Generation",
+    "confidence": 0.88,
+    "verified": true,
+    "updated_at": 1791041542.6806474,
+    "iso_timestamp": "2026-10-03T15:32:22Z"
+  }
+}

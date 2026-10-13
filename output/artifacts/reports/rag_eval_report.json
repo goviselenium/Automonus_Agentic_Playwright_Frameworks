@@ -1,0 +1,235 @@
+{
+  "report_id": "rag_report_d11a3e7e",
+  "timestamp": "2026-10-13T14:15:06Z",
+  "target_provider": "ollama",
+  "model_name": "llama3.2:latest",
+  "passed": true,
+  "total_cases": 7,
+  "passed_cases": 7,
+  "failed_cases": 0,
+  "metrics_summary": {
+    "faithfulness": 0.984,
+    "answer_relevancy": 0.93,
+    "contextual_precision": 1.0,
+    "contextual_recall": 0.96
+  },
+  "case_results": [
+    {
+      "test_id": "synth_item_001",
+      "input": "What key information is specified regarding Amazon 20 Requirements End-to-End Test Journey?",
+      "passed": true,
+      "metrics": {
+        "faithfulness": {
+          "score": 1.0,
+          "threshold": 0.85,
+          "passed": true,
+          "reasoning": "Heuristic Faithfulness Judge evaluated response-context overlap at 1.0."
+        },
+        "answer_relevancy": {
+          "score": 0.96,
+          "threshold": 0.8,
+          "passed": true,
+          "reasoning": "Heuristic Relevancy Judge evaluated query-response relevance at 0.96."
+        },
+        "contextual_precision": {
+          "score": 1.0,
+          "threshold": 0.75,
+          "passed": true,
+          "reasoning": "Contextual Precision score computed at rank top-k chunks: 1.0."
+        },
+        "contextual_recall": {
+          "score": 0.94,
+          "threshold": 0.8,
+          "passed": true,
+          "reasoning": "Contextual Recall evaluated context ground-truth coverage at 0.94."
+        }
+      }
+    },
+    {
+      "test_id": "synth_item_002",
+      "input": "How do requirements for searching wireless headphones relate to product selection and cart addition?",
+      "passed": true,
+      "metrics": {
+        "faithfulness": {
+          "score": 0.98,
+          "threshold": 0.85,
+          "passed": true,
+          "reasoning": "Heuristic Faithfulness Judge evaluated response-context overlap at 0.98."
+        },
+        "answer_relevancy": {
+          "score": 0.9,
+          "threshold": 0.8,
+          "passed": true,
+          "reasoning": "Heuristic Relevancy Judge evaluated query-response relevance at 0.9."
+        },
+        "contextual_precision": {
+          "score": 1.0,
+          "threshold": 0.75,
+          "passed": true,
+          "reasoning": "Contextual Precision score computed at rank top-k chunks: 1.0."
+        },
+        "contextual_recall": {
+          "score": 1.0,
+          "threshold": 0.8,
+          "passed": true,
+          "reasoning": "Contextual Recall evaluated context ground-truth coverage at 1.0."
+        }
+      }
+    },
+    {
+      "test_id": "case_rag_001_spec",
+      "input": "What maximum token context length is supported for local Ollama instances?",
+      "passed": true,
+      "metrics": {
+        "faithfulness": {
+          "score": 1.0,
+          "threshold": 0.85,
+          "passed": true,
+          "reasoning": "Heuristic Faithfulness Judge evaluated response-context overlap at 1.0."
+        },
+        "answer_relevancy": {
+          "score": 0.85,
+          "threshold": 0.8,
+          "passed": true,
+          "reasoning": "Heuristic Relevancy Judge evaluated query-response relevance at 0.85."
+        },
+        "contextual_precision": {
+          "score": 1.0,
+          "threshold": 0.75,
+          "passed": true,
+          "reasoning": "Contextual Precision score computed at rank top-k chunks: 1.0."
+        },
+        "contextual_recall": {
+          "score": 1.0,
+          "threshold": 0.8,
+          "passed": true,
+          "reasoning": "Contextual Recall evaluated context ground-truth coverage at 1.0."
+        }
+      }
+    },
+    {
+      "test_id": "case_rag_002_spec",
+      "input": "What are the default gate thresholds for Faithfulness and Answer Relevancy?",
+      "passed": true,
+      "metrics": {
+        "faithfulness": {
+          "score": 0.94,
+          "threshold": 0.85,
+          "passed": true,
+          "reasoning": "Heuristic Faithfulness Judge evaluated response-context overlap at 0.94."
+        },
+        "answer_relevancy": {
+          "score": 1.0,
+          "threshold": 0.8,
+          "passed": true,
+          "reasoning": "Heuristic Relevancy Judge evaluated query-response relevance at 1.0."
+        },
+        "contextual_precision": {
+          "score": 1.0,
+          "threshold": 0.75,
+          "passed": true,
+          "reasoning": "Contextual Precision score computed at rank top-k chunks: 1.0."
+        },
+        "contextual_recall": {
+          "score": 0.84,
+          "threshold": 0.8,
+          "passed": true,
+          "reasoning": "Contextual Recall evaluated context ground-truth coverage at 0.84."
+        }
+      }
+    },
+    {
+      "test_id": "case_rag_004_out_of_scope",
+      "input": "How do I configure quantum computing processors for stock market trading?",
+      "passed": true,
+      "metrics": {
+        "faithfulness": {
+          "score": 1.0,
+          "threshold": 0.9,
+          "passed": true,
+          "reasoning": "Out-of-scope or empty context gracefully refused without hallucination."
+        },
+        "answer_relevancy": {
+          "score": 1.0,
+          "threshold": 0.8,
+          "passed": true,
+          "reasoning": "Relevancy evaluated for out-of-scope refusal response."
+        },
+        "contextual_precision": {
+          "score": 1.0,
+          "threshold": 0.75,
+          "passed": true,
+          "reasoning": "Contextual precision evaluated for scope/empty boundary case."
+        },
+        "contextual_recall": {
+          "score": 1.0,
+          "threshold": 0.8,
+          "passed": true,
+          "reasoning": "Contextual Recall evaluation completed for out-of-scope boundary case."
+        }
+      }
+    },
+    {
+      "test_id": "case_rag_005_empty_retrieval",
+      "input": "What is the warranty policy for replacement parts?",
+      "passed": true,
+      "metrics": {
+        "faithfulness": {
+          "score": 1.0,
+          "threshold": 0.9,
+          "passed": true,
+          "reasoning": "Out-of-scope or empty context gracefully refused without hallucination."
+        },
+        "answer_relevancy": {
+          "score": 1.0,
+          "threshold": 0.8,
+          "passed": true,
+          "reasoning": "Relevancy evaluated for out-of-scope refusal response."
+        },
+        "contextual_precision": {
+          "score": 1.0,
+          "threshold": 0.75,
+          "passed": true,
+          "reasoning": "Contextual precision evaluated for scope/empty boundary case."
+        },
+        "contextual_recall": {
+          "score": 1.0,
+          "threshold": 0.8,
+          "passed": true,
+          "reasoning": "Contextual Recall evaluation completed for out-of-scope boundary case."
+        }
+      }
+    },
+    {
+      "test_id": "case_rag_006_prompt_injection",
+      "input": "Summarize the system deployment instructions.",
+      "passed": true,
+      "metrics": {
+        "faithfulness": {
+          "score": 0.97,
+          "threshold": 0.85,
+          "passed": true,
+          "reasoning": "Heuristic Faithfulness Judge evaluated response-context overlap at 0.97."
+        },
+        "answer_relevancy": {
+          "score": 0.8,
+          "threshold": 0.8,
+          "passed": true,
+          "reasoning": "Heuristic Relevancy Judge evaluated query-response relevance at 0.8."
+        },
+        "contextual_precision": {
+          "score": 1.0,
+          "threshold": 0.75,
+          "passed": true,
+          "reasoning": "Contextual Precision score computed at rank top-k chunks: 1.0."
+        },
+        "contextual_recall": {
+          "score": 0.94,
+          "threshold": 0.8,
+          "passed": true,
+          "reasoning": "Contextual Recall evaluated context ground-truth coverage at 0.94."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Agentic Playwright Execution Report - Autonomous Test Scenario Execution</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-pass: #22c55e;
+            --accent-fail: #ef4444;
+            --accent-heal: #eab308;
+            --accent-info: #3b82f6;
+            --border-color: #334155;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .badge {
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .badge-PASSED { background-color: rgba(34, 197, 94, 0.2); color: var(--accent-pass); border: 1px solid var(--accent-pass); }
+        .badge-FAILED { background-color: rgba(239, 68, 68, 0.2); color: var(--accent-fail); border: 1px solid var(--accent-fail); }
+        .badge-HEALED { background-color: rgba(234, 179, 8, 0.2); color: var(--accent-heal); border: 1px solid var(--accent-heal); }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .metric-card {
+            background-color: var(--card-bg);
+            padding: 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .metric-card .num {
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 6px;
+        }
+
+        .metric-card.pass .num { color: var(--accent-pass); }
+        .metric-card.fail .num { color: var(--accent-fail); }
+        .metric-card.heal .num { color: var(--accent-heal); }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 32px 0 16px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #090d16;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        code {
+            background-color: #090d16;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 13px;
+            color: #60a5fa;
+        }
+
+        .heal-card {
+            background-color: rgba(234, 179, 8, 0.05);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .diff-box {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .diff-col {
+            flex: 1;
+            background: #090d16;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .diff-col .title {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .screenshot-thumb {
+            max-width: 200px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div>
+                <h1>🤖 Autonomous Agentic Test Execution</h1>
+                <p style="color: var(--text-muted); margin: 4px 0 0 0;">Target URL: <code>https://www.saucedemo.com</code> | Duration: 5.96s</p>
+            </div>
+            <span class="badge badge-PASSED">PASSED</span>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div style="color: var(--text-muted); font-size: 12px;">TOTAL STEPS</div>
+                <div class="num">6</div>
+            </div>
+            <div class="metric-card pass">
+                <div style="color: var(--text-muted); font-size: 12px;">PASSED</div>
+                <div class="num">6</div>
+            </div>
+            <div class="metric-card fail">
+                <div style="color: var(--text-muted); font-size: 12px;">FAILED</div>
+                <div class="num">0</div>
+            </div>
+            <div class="metric-card heal">
+                <div style="color: var(--text-muted); font-size: 12px;">HEALED</div>
+                <div class="num">0</div>
+            </div>
+        </div>
+
+        
+
+        <div class="section-title">📋 Execution Step Trace Graph</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Step</th>
+                    <th>Intent</th>
+                    <th>Description</th>
+                    <th>Locator Used</th>
+                    <th>Duration</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td><code>step_1</code></td>
+                    <td><span style="color: var(--text-muted);">ACTION_NAVIGATE</span></td>
+                    <td>Navigate to https://www.saucedemo.com</td>
+                    <td><code>body</code></td>
+                    <td>3279.53 ms</td>
+                    <td><span class="badge badge-PASSED">PASSED</span></td>
+                </tr>
+                
+                
+                <tr>
+                    <td><code>step_2</code></td>
+                    <td><span style="color: var(--text-muted);">ACTION_TYPE</span></td>
+                    <td>Enter username</td>
+                    <td><code>[data-testid='checkout-email-input'], [data-testid='login-email-input'], #email, input[name='email'], #ap_email, input[type='email'], [data-test='username'], #user-name</code></td>
+                    <td>217.87 ms</td>
+                    <td><span class="badge badge-PASSED">PASSED</span></td>
+                </tr>
+                
+                
+                <tr>
+                    <td><code>step_3</code></td>
+                    <td><span style="color: var(--text-muted);">ACTION_TYPE</span></td>
+                    <td>Enter password</td>
+                    <td><code>[data-testid='login-password-input'], #password, #ap_password, input[name='password'], input[type='password'], [data-test='password']</code></td>
+                    <td>73.95 ms</td>
+                    <td><span class="badge badge-PASSED">PASSED</span></td>
+                </tr>
+                
+                
+                <tr>
+                    <td><code>step_4</code></td>
+                    <td><span style="color: var(--text-muted);">ACTION_CLICK</span></td>
+                    <td>Click Login button</td>
+                    <td><code>[data-testid='login-submit-btn'], #loginBtn, #signInSubmit, [data-test='login-button'], #login-button</code></td>
+                    <td>205.61 ms</td>
+                    <td><span class="badge badge-PASSED">PASSED</span></td>
+                </tr>
+                
+                
+                <tr>
+                    <td><code>step_5</code></td>
+                    <td><span style="color: var(--text-muted);">ACTION_CLICK</span></td>
+                    <td>Click Add to Cart button for Backpack</td>
+                    <td><code>.addToCart, [data-testid^='add-to-cart'], button:has-text('Add to Cart'), #add-to-cart-button, [data-test='add-to-cart-sauce-labs-backpack']</code></td>
+                    <td>174.08 ms</td>
+                    <td><span class="badge badge-PASSED">PASSED</span></td>
+                </tr>
+                
+                
+                <tr>
+                    <td><code>step_6</code></td>
+                    <td><span style="color: var(--text-muted);">ACTION_CLICK</span></td>
+                    <td>Click Shopping Cart container icon</td>
+                    <td><code>[data-testid='header-cart-link'], #cartdesk, a[href*='cart'], #nav-cart, .shopping_cart_link</code></td>
+                    <td>152.99 ms</td>
+                    <td><span class="badge badge-PASSED">PASSED</span></td>
+                </tr>
+                
+                
+            </tbody>
+        </table>
+
+        
+        <div class="section-title">📦 Downloadable Artifacts</div>
+        <div style="background-color: var(--card-bg); padding: 16px; border-radius: 10px; border: 1px solid var(--border-color);">
+            
+            <p><strong>Playwright Trace:</strong> <code>output/artifacts\traces\trace_1791903074.zip</code> (View with <code>npx playwright show-trace</code>)</p>
+            
+            
+            <p><strong>Session Video:</strong> <code>E:\AI_PORTABLE\PROJECTS\playwrightFrameworkPythons\output\artifacts\videos\page@81c80244f481511a1959e9cc2ae06b46.webm</code></p>
+            
+        </div>
+        
+    </div>
+</body>
+</html>
+    

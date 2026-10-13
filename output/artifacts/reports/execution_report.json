@@ -1,0 +1,91 @@
+{
+  "test_id": "plan_d0a6341c",
+  "title": "Autonomous Test Scenario Execution",
+  "target_url": "https://www.saucedemo.com",
+  "overall_status": "PASSED",
+  "start_time": "2026-10-13T14:51:09Z",
+  "end_time": "2026-10-13T14:51:15Z",
+  "duration_seconds": 5.96,
+  "total_steps": 6,
+  "passed_steps": 6,
+  "failed_steps": 0,
+  "healed_steps": 0,
+  "skipped_steps": 0,
+  "trace_path": "output/artifacts\\traces\\trace_1791903074.zip",
+  "video_path": "E:\\AI_PORTABLE\\PROJECTS\\playwrightFrameworkPythons\\output\\artifacts\\videos\\page@81c80244f481511a1959e9cc2ae06b46.webm",
+  "step_results": [
+    {
+      "step_id": "step_1",
+      "intent": "ACTION_NAVIGATE",
+      "description": "Navigate to https://www.saucedemo.com",
+      "status": "PASSED",
+      "used_locator": "body",
+      "action_taken": "Navigated to https://www.saucedemo.com",
+      "duration_ms": 3279.53,
+      "error_message": null,
+      "screenshot_path": null,
+      "healing_audit": null
+    },
+    {
+      "step_id": "step_2",
+      "intent": "ACTION_TYPE",
+      "description": "Enter username",
+      "status": "PASSED",
+      "used_locator": "[data-testid='checkout-email-input'], [data-testid='login-email-input'], #email, input[name='email'], #ap_email, input[type='email'], [data-test='username'], #user-name",
+      "action_taken": "fill on '[data-testid='checkout-email-input'], [data-testid='login-email-input'], #email, input[name='email'], #ap_email, input[type='email'], [data-test='username'], #user-name' with value 'standard_user'",
+      "duration_ms": 217.87,
+      "error_message": null,
+      "screenshot_path": null,
+      "healing_audit": null
+    },
+    {
+      "step_id": "step_3",
+      "intent": "ACTION_TYPE",
+      "description": "Enter password",
+      "status": "PASSED",
+      "used_locator": "[data-testid='login-password-input'], #password, #ap_password, input[name='password'], input[type='password'], [data-test='password']",
+      "action_taken": "fill on '[data-testid='login-password-input'], #password, #ap_password, input[name='password'], input[type='password'], [data-test='password']' with value 'secret_sauce'",
+      "duration_ms": 73.95,
+      "error_message": null,
+      "screenshot_path": null,
+      "healing_audit": null
+    },
+    {
+      "step_id": "step_4",
+      "intent": "ACTION_CLICK",
+      "description": "Click Login button",
+      "status": "PASSED",
+      "used_locator": "[data-testid='login-submit-btn'], #loginBtn, #signInSubmit, [data-test='login-button'], #login-button",
+      "action_taken": "click on '[data-testid='login-submit-btn'], #loginBtn, #signInSubmit, [data-test='login-button'], #login-button'",
+      "duration_ms": 205.61,
+      "error_message": null,
+      "screenshot_path": null,
+      "healing_audit": null
+    },
+    {
+      "step_id": "step_5",
+      "intent": "ACTION_CLICK",
+      "description": "Click Add to Cart button for Backpack",
+      "status": "PASSED",
+      "used_locator": ".addToCart, [data-testid^='add-to-cart'], button:has-text('Add to Cart'), #add-to-cart-button, [data-test='add-to-cart-sauce-labs-backpack']",
+      "action_taken": "click on '.addToCart, [data-testid^='add-to-cart'], button:has-text('Add to Cart'), #add-to-cart-button, [data-test='add-to-cart-sauce-labs-backpack']'",
+      "duration_ms": 174.08,
+      "error_message": null,
+      "screenshot_path": null,
+      "healing_audit": null
+    },
+    {
+      "step_id": "step_6",
+      "intent": "ACTION_CLICK",
+      "description": "Click Shopping Cart container icon",
+      "status": "PASSED",
+      "used_locator": "[data-testid='header-cart-link'], #cartdesk, a[href*='cart'], #nav-cart, .shopping_cart_link",
+      "action_taken": "click on '[data-testid='header-cart-link'], #cartdesk, a[href*='cart'], #nav-cart, .shopping_cart_link'",
+      "duration_ms": 152.99,
+      "error_message": null,
+      "screenshot_path": null,
+      "healing_audit": null
+    }
+  ],
+  "healing_audits": []
+}

@@ -8,6 +8,7 @@ import xml.sax.saxutils as saxutils
 from typing import List, Optional, Dict
 from agents.base_agent import BaseAgent
 from agents.azure_user_story_agent import AzureUserStoryAgent
+from config.settings import settings
 from schema.azure_work_item import (
     ParsedUseCase,
     AzureTestCasePayload,
@@ -45,9 +46,9 @@ class TestCaseCreateAgent(BaseAgent):
         pat: Optional[str] = None
     ):
         super().__init__(role="TestCaseCreateAgent")
-        self.organization = organization
-        self.project = project
-        self.pat = pat or os.getenv("AZURE_DEVOPS_PAT") or DEFAULT_PAT
+        self.organization = organization or settings.AZURE_DEVOPS_ORG
+        self.project = project or settings.AZURE_DEVOPS_PROJECT
+        self.pat = pat or os.getenv("AZURE_DEVOPS_PAT") or settings.AZURE_DEVOPS_PAT or DEFAULT_PAT
         self.story_agent = AzureUserStoryAgent(organization=self.organization, project=self.project, pat=self.pat)
 
     # =========================================================================

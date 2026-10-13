@@ -47,6 +47,11 @@ class FrameworkSettings(BaseSettings):
         description="Keys to automatically mask"
     )
 
+    # Azure DevOps Integration
+    AZURE_DEVOPS_ORG: str = Field(default="govidev", description="Azure DevOps organization")
+    AZURE_DEVOPS_PROJECT: str = Field(default="Frameworks", description="Azure DevOps project")
+    AZURE_DEVOPS_PAT: Optional[str] = Field(default=None, description="Azure DevOps Personal Access Token")
+
     def get_output_path(self, *subpaths: str) -> str:
         """Utility to get an absolute output subpath."""
         path = os.path.join(self.ARTIFACTS_DIR, *subpaths)

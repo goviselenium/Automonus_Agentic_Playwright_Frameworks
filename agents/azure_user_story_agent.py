@@ -6,6 +6,7 @@ import subprocess
 import tempfile
 from typing import List, Optional
 from agents.base_agent import BaseAgent
+from config.settings import settings
 from schema.azure_work_item import (
     ParsedUseCase,
     AzureUserStoryPayload,
@@ -42,9 +43,9 @@ class AzureUserStoryAgent(BaseAgent):
         pat: Optional[str] = None
     ):
         super().__init__(role="AzureUserStoryAgent")
-        self.organization = organization
-        self.project = project
-        self.pat = pat or os.getenv("AZURE_DEVOPS_PAT") or DEFAULT_PAT
+        self.organization = organization or settings.AZURE_DEVOPS_ORG
+        self.project = project or settings.AZURE_DEVOPS_PROJECT
+        self.pat = pat or os.getenv("AZURE_DEVOPS_PAT") or settings.AZURE_DEVOPS_PAT or DEFAULT_PAT
 
     # =========================================================================
     # PARSING ENGINE

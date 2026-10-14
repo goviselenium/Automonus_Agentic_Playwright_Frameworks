@@ -14,8 +14,6 @@ from schema.azure_work_item import (
     AzureCreationSummary,
 )
 
-DEFAULT_PAT = ""
-
 
 class AzureUserStoryAgent(BaseAgent):
     """
@@ -45,7 +43,7 @@ class AzureUserStoryAgent(BaseAgent):
         super().__init__(role="AzureUserStoryAgent")
         self.organization = organization or settings.AZURE_DEVOPS_ORG
         self.project = project or settings.AZURE_DEVOPS_PROJECT
-        self.pat = pat or os.getenv("AZURE_DEVOPS_PAT") or settings.AZURE_DEVOPS_PAT or DEFAULT_PAT
+        self.pat = pat or os.getenv("AZURE_DEVOPS_PAT") or settings.AZURE_DEVOPS_PAT or ""
 
     # =========================================================================
     # PARSING ENGINE

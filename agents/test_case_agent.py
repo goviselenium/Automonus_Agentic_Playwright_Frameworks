@@ -16,8 +16,6 @@ from schema.azure_work_item import (
     AzureCreationSummary,
 )
 
-DEFAULT_PAT = ""
-
 
 class TestCaseCreateAgent(BaseAgent):
     __test__ = False
@@ -48,7 +46,7 @@ class TestCaseCreateAgent(BaseAgent):
         super().__init__(role="TestCaseCreateAgent")
         self.organization = organization or settings.AZURE_DEVOPS_ORG
         self.project = project or settings.AZURE_DEVOPS_PROJECT
-        self.pat = pat or os.getenv("AZURE_DEVOPS_PAT") or settings.AZURE_DEVOPS_PAT or DEFAULT_PAT
+        self.pat = pat or os.getenv("AZURE_DEVOPS_PAT") or settings.AZURE_DEVOPS_PAT or ""
         self.story_agent = AzureUserStoryAgent(organization=self.organization, project=self.project, pat=self.pat)
 
     # =========================================================================

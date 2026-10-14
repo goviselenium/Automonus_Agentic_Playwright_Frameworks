@@ -64,7 +64,7 @@ class LocalSynthesizer:
                 ],
                 "temperature": 0.3
             }
-            async with httpx.AsyncClient(timeout=20.0) as client:
+            async with httpx.AsyncClient(timeout=2.0) as client:
                 res = await client.post(url, json=payload)
                 if res.status_code == 200:
                     return res.json()["choices"][0]["message"]["content"]

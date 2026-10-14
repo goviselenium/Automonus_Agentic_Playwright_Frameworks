@@ -19,9 +19,9 @@ def load_test_cases() -> List[LLMTestCase]:
         LLMTestCase(
             test_id=item.get("id", f"case_{idx}"),
             input=item["input"],
-            actual_output=item["actual_output"],
+            actual_output=item.get("actual_output") or item.get("expected_output", ""),
             expected_output=item.get("expected_output"),
-            retrieval_context=item.get("retrieval_context", []),
+            retrieval_context=item.get("retrieval_context") or item.get("context", []),
             tags=item.get("tags", [])
         )
         for idx, item in enumerate(items)

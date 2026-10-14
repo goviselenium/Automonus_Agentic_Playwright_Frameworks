@@ -23,13 +23,21 @@ async def main():
 
     output_data = [
         {
+            "id": getattr(item, "id", f"synth_{idx+1}"),
             "input": item.input,
+            "actual_output": getattr(item, "expected_output", ""),
             "expected_output": item.expected_output,
+            "retrieval_context": item.context,
             "context": item.context,
-            "evolution_type": item.evolution_type
+            "evolution_type": item.evolution_type,
+            "tags": ["synthetic", item.evolution_type]
         }
-        for item in golden_items
+        for idx, item in enumerate(golden_items)
     ]
+
+    out_dir = os.path.dirname(os.path.abspath(args.output))
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
 
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(output_data, f, indent=2)

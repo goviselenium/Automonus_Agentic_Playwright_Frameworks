@@ -24,10 +24,11 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest pytest-asyncio pytest-xdist httpx pydantic pydantic-settings python-dotenv rich
+          pip install -r requirements.txt pytest-xdist
 
       - name: Run Synthetic Golden Dataset Validation
         run: |
+          mkdir -p output/artifacts/reports
           python synthesizer_local.py --doc tests/sample_requirements/amazon_20_requirements.md --output output/artifacts/synthetic_data.json --max-items 5
 
       - name: Execute RAG Quality Gate Pytest Suite
